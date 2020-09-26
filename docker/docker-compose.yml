@@ -1,0 +1,18 @@
+version: '3'
+services:
+  srv_maintenance:
+    container_name: srv_maintenance
+    image: nginx:latest
+    ports:
+      - 9999:80
+    volumes:
+      - ../:/sites
+      - ./docker-entrypoint-init.d:/docker-entrypoint-init.d
+      - ./docker-entrypoint.sh:/docker-entrypoint.sh
+    networks:
+      - new     
+    restart: always
+volumes:
+  entrypoint:
+networks:
+  new:  
